@@ -8,23 +8,27 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Iterator;
 import java.util.Map;
 
-@Controller
+@RestController
 public class BookShelfController {
 
     @Autowired
     private BookService bookService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView queryBooks() {
+    public Iterable<Book> queryBooks() {
+        return bookService.findAll();
+    }
 
-        ModelMap model = new ModelMap();
-        model.put("books", bookService.findAll());
-        return new ModelAndView("books", model);
-
+    @RequestMapping(value = "/hello")
+    public String testFreemarker(Map<String, Object> map) {
+        map.put("name", "王培");
+        return "hello";
     }
 
     @RequestMapping(value = "book/{isbn}", method = RequestMethod.GET)
