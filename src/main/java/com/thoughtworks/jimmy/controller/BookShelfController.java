@@ -1,6 +1,7 @@
 package com.thoughtworks.jimmy.controller;
 
 import com.thoughtworks.jimmy.model.Book;
+import com.thoughtworks.jimmy.model.Status;
 import com.thoughtworks.jimmy.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,29 +32,35 @@ public class BookShelfController {
         return bookService.findByIsbn(isbn);
     }
 
-    @RequestMapping(value = "book/new", method = RequestMethod.GET)
-    public String toNewBook() {
-        return "newBook";
-    }
-
     @RequestMapping(value = "book/new", method = RequestMethod.POST)
-    public String newBook(Book book) {
-        bookService.addBook(book);
-        return "redirect:/";
+    public Status newBook(Book book, Status status) {
+        if (bookService.addBook(book)) {
+            status = new Status(1, "success");
+        } else {
+            status = new Status(0, "failure");
+        }
+        status = new Status(1, "success");
+        return status;
     }
 
-    @RequestMapping(value = "book/edit/{isbn}", method = RequestMethod.GET)
-    public ModelAndView toEditBook(@PathVariable String isbn, Map<String, Object> map) {
-//        map.put("book", bookService.findByIsbn(isbn));
-        ModelMap modelMap = new ModelMap();
-        modelMap.put("book", bookService.findByIsbn(isbn));
-        return new ModelAndView("editBook", modelMap);
-        //return "editBook";
+    @RequestMapping(value = "book", method = RequestMethod.PUT)
+    public Status editBook(Book book, Status status) {
+        if (bookService.editBook(book)) {
+            status = new Status(1, "success");
+        } else {
+            status = new Status(0, "failure");
+        }
+        return status;
     }
 
-    @RequestMapping(value = "book/edit", method = RequestMethod.POST)
-    public String editBook(Book book) {
-        bookService.addBook(book);
-        return "redirect:/";
+    @RequestMapping(value = "book/{isbn}", method = RequestMethod.DELETE)
+    public Status deleteBook(@PathVariable String isbn, Status status) {
+        if (bookService.delete(isbn)) {
+            status = new Status(1, "success");
+        } else {
+            status = new Status(0, "failure");
+        }
+        return status;
     }
+
 }

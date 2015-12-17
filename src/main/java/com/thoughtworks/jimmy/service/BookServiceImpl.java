@@ -26,8 +26,30 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void addBook(Book book) {
+    public boolean addBook(Book book) {
         bookRepository.addOne(book);
+        if (null != bookRepository.findOne(book.getIsbn())) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean delete(String isbn) {
+        bookRepository.delete(isbn);
+        if (null == bookRepository.findOne(isbn)) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean editBook(Book book) {
+        if (null == bookRepository.findOne(book.getIsbn())) {
+            return false;
+        }
+        bookRepository.addOne(book);
+        return true;
     }
 
 }
