@@ -1,48 +1,10 @@
 # thwo-bookshelf
 
-## Workshop
-
-### Step 0:
-
-GET: hello {name}! 
-
-via [Spring Web MVC DispatcherServlet](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html#mvc-servlet).
-
-### Step 1:
-
-// given
-
-GET: show all books in index page.
-
-// when
-
-// then
-
-implement `fetch book details` functionality.
-
-### Step 2:
-
-// given
-
-a ready-to-wear `form` for book information.
-
-// when
-
-// then
-
-implement `create new book` functionality.
-
-### Step 3:
-
-- option 1: Edit / Delete / ...
-- option 2: return data with JSON format => split front-end & back-end
-
-
-## Extendibility
-
-- What's Spring IoC & DI?
-- Service interface => different implementation
-- Data Repository
-
-
-
+##master 分支
+前端模板是thymeleaf，完成crud功能
+##freemarker 分支
+测试了下使用freemarker，默认使用ftl结尾文件。并没有完成crud功能
+##consumerFreemarker分支
+测试了使用自定义文件结尾 使用html文件结尾 没有完成crud功能
+##jsonApi分支
+返回json字符串,完成crud功能
