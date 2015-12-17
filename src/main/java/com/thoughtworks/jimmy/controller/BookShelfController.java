@@ -24,7 +24,12 @@ public class BookShelfController {
         ModelMap model = new ModelMap();
         model.put("books", bookService.findAll());
         return new ModelAndView("books", model);
+    }
 
+    @RequestMapping("/testFreemarker")
+    public String testFreemarker(Map<String, String> map) {
+        map.put("name", "王培");
+        return "testFreemarker";
     }
 
     @RequestMapping(value = "book/{isbn}", method = RequestMethod.GET)
