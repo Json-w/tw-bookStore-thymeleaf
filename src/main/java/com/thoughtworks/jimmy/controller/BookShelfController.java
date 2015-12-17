@@ -25,18 +25,10 @@ public class BookShelfController {
         return bookService.findAll();
     }
 
-    @RequestMapping(value = "/hello")
-    public String testFreemarker(Map<String, Object> map) {
-        map.put("name", "王培");
-        return "hello";
-    }
-
     @RequestMapping(value = "book/{isbn}", method = RequestMethod.GET)
-    public ModelAndView getBook(@PathVariable String isbn) {
+    public Book getBook(@PathVariable String isbn) {
 
-        ModelMap model = new ModelMap();
-        model.put("book", bookService.findByIsbn(isbn));
-        return new ModelAndView("book", model);
+        return bookService.findByIsbn(isbn);
     }
 
     @RequestMapping(value = "book/new", method = RequestMethod.GET)
