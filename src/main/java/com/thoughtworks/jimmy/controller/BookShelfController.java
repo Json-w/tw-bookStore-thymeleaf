@@ -43,7 +43,7 @@ public class BookShelfController {
         return status;
     }
 
-    @RequestMapping(value = "book", method = RequestMethod.PUT)
+    @RequestMapping(value = "book", method = RequestMethod.POST)
     public Status editBook(Book book, Status status) {
         if (bookService.editBook(book)) {
             status = new Status(1, "success");

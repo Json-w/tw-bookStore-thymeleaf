@@ -9,6 +9,9 @@ public class Status {
         this.describe = describe;
     }
 
+    public Status() {
+    }
+
     public int getCode() {
         return code;
     }
