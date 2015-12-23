@@ -6,10 +6,7 @@ import com.thoughtworks.jimmy.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Iterator;
@@ -43,8 +40,8 @@ public class BookShelfController {
         return status;
     }
 
-    @RequestMapping(value = "book", method = RequestMethod.PUT)
-    public Status editBook(Book book, Status status) {
+    @RequestMapping(value = "/book", method = RequestMethod.PUT)
+    public Status editBook(@RequestBody Book book, Status status) {
         if (bookService.editBook(book)) {
             status = new Status(1, "success");
         } else {
