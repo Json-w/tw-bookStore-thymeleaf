@@ -1,6 +1,12 @@
 package com.thoughtworks.jimmy.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Book {
+    @Id
     private String isbn;
     private String name;
     private String author;

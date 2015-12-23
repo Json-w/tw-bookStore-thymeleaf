@@ -27,7 +27,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public boolean addBook(Book book) {
-        bookRepository.addOne(book);
+        bookRepository.save(book);
         if (null != bookRepository.findOne(book.getIsbn())) {
             return true;
         }
@@ -48,7 +48,7 @@ public class BookServiceImpl implements BookService {
         if (null == bookRepository.findOne(book.getIsbn())) {
             return false;
         }
-        bookRepository.addOne(book);
+        bookRepository.save(book);
         return true;
     }
 
