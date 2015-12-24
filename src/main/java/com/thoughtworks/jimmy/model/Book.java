@@ -1,13 +1,14 @@
 package com.thoughtworks.jimmy.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Book {
     @Id
     private String isbn;
+    @Column(name = "title")
     private String name;
     private String author;
     private Double price;

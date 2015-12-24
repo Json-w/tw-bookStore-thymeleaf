@@ -1,0 +1,1 @@
+alter table book change column name title varchar(100);
