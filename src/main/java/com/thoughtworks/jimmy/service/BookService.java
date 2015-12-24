@@ -13,4 +13,6 @@ public interface BookService {
     boolean delete(String isbn);
 
     boolean editBook(Book book);
+
+    Iterable<Book> findBooksByTitleContaining(String title);
 }

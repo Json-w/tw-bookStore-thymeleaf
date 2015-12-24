@@ -60,4 +60,8 @@ public class BookShelfController {
         return status;
     }
 
+    @RequestMapping(value = "book/title/{title}", method = RequestMethod.GET)
+    public Iterable<Book> getBooksByTitle(@PathVariable String title) {
+        return bookService.findBooksByTitleContaining(title);
+    }
 }

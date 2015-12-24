@@ -9,5 +9,5 @@ import java.util.Map;
 
 @Repository
 public interface BookRepository extends CrudRepository<Book, String> {
-
+    Iterable<Book> findByTitleContaining(String title);
 }

@@ -4,7 +4,7 @@
 
 ### Step 0:
 
-GET: hello {name}! 
+GET: hello {title}!
 
 via [Spring Web MVC DispatcherServlet](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html#mvc-servlet).
 

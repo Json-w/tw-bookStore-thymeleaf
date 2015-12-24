@@ -4,8 +4,10 @@ import com.thoughtworks.jimmy.model.Book;
 import com.thoughtworks.jimmy.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class BookServiceImpl implements BookService {
 
     private BookRepository bookRepository;
@@ -50,6 +52,11 @@ public class BookServiceImpl implements BookService {
         }
         bookRepository.save(book);
         return true;
+    }
+
+    @Override
+    public Iterable<Book> findBooksByTitleContaining(String title) {
+        return bookRepository.findByTitleContaining(title);
     }
 
 }

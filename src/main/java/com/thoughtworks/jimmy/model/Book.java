@@ -9,7 +9,7 @@ public class Book {
     @Id
     private String isbn;
     @Column(name = "title")
-    private String name;
+    private String title;
     private String author;
     private Double price;
 
@@ -17,19 +17,19 @@ public class Book {
 
     }
 
-    public Book(String isbn, String name, String author, Double price) {
+    public Book(String isbn, String title, String author, Double price) {
         this.isbn = isbn;
-        this.name = name;
+        this.title = title;
         this.author = author;
         this.price = price;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getIsbn() {
